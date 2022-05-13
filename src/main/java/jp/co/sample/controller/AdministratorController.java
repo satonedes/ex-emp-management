@@ -5,23 +5,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jp.co.sample.form.InsertAdministractorForm;
-import jp.co.sample.service.AdministractorService;
+import jp.co.sample.form.InsertAdministratorForm;
+import jp.co.sample.service.AdministratorService;
 
 @Controller
 @RequestMapping("/")
-public class AdministractorController {
+public class AdministratorController {
 	
 	@Autowired
-	private AdministractorService administractorService;
+	private AdministratorService administractorService;
 	
 	@ModelAttribute
-	public InsertAdministractorForm setUpInsertAdministractorForm() {
-		InsertAdministractorForm adForm = new InsertAdministractorForm();
+	public InsertAdministratorForm setUpInsertAdministractorForm() {
+		InsertAdministratorForm adForm = new InsertAdministratorForm();
 		return adForm;
 	}
 	@RequestMapping("/toInsert")
 	public String toInsert() {
-		return "administrator";
+		return "administrator/insert";
 	}
 }

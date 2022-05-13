@@ -10,13 +10,13 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import jp.co.sample.domain.Administractor;
+import jp.co.sample.domain.Administrator;
 
 @Repository
 public class AdministratorRepository {
 
-	private static final RowMapper<Administractor> ADMINISTRACTOR_ROW_MAPPER = (rs, i) -> {
-		Administractor administractor = new Administractor();
+	private static final RowMapper<Administrator> ADMINISTRACTOR_ROW_MAPPER = (rs, i) -> {
+		Administrator administractor = new Administrator();
 		administractor.setId(rs.getInt("id"));
 		administractor.setName(rs.getString("name"));
 		administractor.setMail(rs.getString("mail"));
@@ -27,7 +27,7 @@ public class AdministratorRepository {
 	@Autowired
 	private NamedParameterJdbcTemplate template;
 
-	public void insert(Administractor administractor) {
+	public void insert(Administrator administractor) {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(administractor);
 
 		String insertSql = "insert into administractors(name,mail_adress,password)values(:name,:mail,;password)";
@@ -35,11 +35,11 @@ public class AdministratorRepository {
 
 	}
 
-	public Administractor findByMailAddressAndPassword(String mailAddress, String password) {
+	public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
 		String sql = "select id, name, mail_address, password from administractors where mail_address =:mail and password =;password";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("password", password).addValue("mail", mailAddress);
 		
-		List<Administractor> administractorList = template.query(sql, param, ADMINISTRACTOR_ROW_MAPPER);
+		List<Administrator> administractorList = template.query(sql, param, ADMINISTRACTOR_ROW_MAPPER);
 		if (administractorList.size() == 0) {
 			return null;
 		}
