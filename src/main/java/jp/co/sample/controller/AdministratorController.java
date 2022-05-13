@@ -32,14 +32,14 @@ public class AdministratorController {
 		Administrator administrator = new Administrator();
 		BeanUtils.copyProperties(form, administrator);
 		administratorService.insert(administrator);
-		return "administrator/login";
+		return "redirect:/";
 	}
 	@ModelAttribute
 	public LoginForm setUploginForm() {
-		LoginForm loginForm = new LoginForm();
-		return setUploginForm();
+		return new LoginForm();
+//		return setUploginForm();
 	}
-	@RequestMapping("/")
+	@RequestMapping("/login")
 	public String toLogin() {
 		return "administrator/login";
 	}
