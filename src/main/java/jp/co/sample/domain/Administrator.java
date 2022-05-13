@@ -15,11 +15,6 @@ public class Administrator {
 		this.password = password;
 	}
 
-	@Override
-	public String toString() {
-		return "Administrator [id=" + id + ", name=" + name + ", mail=" + mailAddress + ", password=" + password + "]";
-	}
-
 	public Integer getId() {
 		return id;
 	}
@@ -36,12 +31,12 @@ public class Administrator {
 		this.name = name;
 	}
 
-	public String getMail() {
+	public String getMailAddress() {
 		return mailAddress;
 	}
 
-	public void setMail(String mail) {
-		this.mailAddress = mail;
+	public void setMailAddress(String mailAddress) {
+		this.mailAddress = mailAddress;
 	}
 
 	public String getPassword() {
@@ -50,6 +45,12 @@ public class Administrator {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Administrator [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
+				+ "]";
 	}
 
 }

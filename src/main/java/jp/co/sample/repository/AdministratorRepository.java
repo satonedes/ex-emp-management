@@ -16,12 +16,12 @@ import jp.co.sample.domain.Administrator;
 public class AdministratorRepository {
 
 	private static final RowMapper<Administrator> ADMINISTRACTOR_ROW_MAPPER = (rs, i) -> {
-		Administrator administractor = new Administrator();
-		administractor.setId(rs.getInt("id"));
-		administractor.setName(rs.getString("name"));
-		administractor.setMail(rs.getString("mail"));
-		administractor.setPassword(rs.getString("password"));
-		return administractor;
+		Administrator administrator = new Administrator();
+		administrator.setId(rs.getInt("id"));
+		administrator.setName(rs.getString("name"));
+		administrator.setMailAddress(rs.getString("mailAddress"));
+		administrator.setPassword(rs.getString("password"));
+		return administrator;
 	};
 
 	@Autowired
@@ -30,14 +30,14 @@ public class AdministratorRepository {
 	public void insert(Administrator administractor) {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(administractor);
 
-		String insertSql = "insert into administractors(name,mail_adress,password)values(:name,:mail,;password)";
+		String insertSql = "insert into administrators (name,mail_address,password) values (:name, :mailAddress, :password)";
 		template.update(insertSql, param);
 
 	}
 
 	public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
-		String sql = "select id, name, mail_address, password from administractors where mail_address =:mail and password =;password";
-		SqlParameterSource param = new MapSqlParameterSource().addValue("password", password).addValue("mail", mailAddress);
+		String sql = "select id, name, mail_address, password from administractors where mail_address =:mailAddress and password =;password";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("password", password).addValue("mailAddress", mailAddress);
 		
 		List<Administrator> administractorList = template.query(sql, param, ADMINISTRACTOR_ROW_MAPPER);
 		if (administractorList.size() == 0) {
