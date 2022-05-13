@@ -1,14 +1,14 @@
 package jp.co.sample.domain;
 
-public class Administrator {
+public class Administractor {
 	public Integer id;
 	public String name;
 	public String mail;
 	public String password;
 	
-	Administrator(){}
+	public Administractor(){}
 	
-	Administrator(Integer id, String name, String mail, String password){
+	public Administractor(Integer id, String name, String mail, String password){
 		this.id = id;
 		this.name = name;
 		this.mail = mail;
