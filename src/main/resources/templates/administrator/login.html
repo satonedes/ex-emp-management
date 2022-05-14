@@ -35,7 +35,8 @@
 							<legend>ログイン</legend>
 							<div class="form-group">
 								<div class="alert alert-danger">
-			                        <span th:if="${form == null}" th:text="メールアドレスまたはパスワードが間違っています">
+			                        <span th:if="${administrator == null}" th:text="${error}"></span>
+			                        <p>メールアドレスまたはパスワードが間違っています</p>
 			                    </div>
 							</div>
 							

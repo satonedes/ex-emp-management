@@ -53,11 +53,12 @@ public class AdministratorController {
 	public String login(LoginForm form, Model model) {
 		Administrator administrator = administratorService.login(form.getMailAddress(), form.getPassword());
 		if(administrator == null) {
-			model.addAttribute("form", form);
+			String error = "メールアドレスまたはパスワードが不正です。";
+			model.addAttribute("error", error);
 			return "administrator/login";
 		}else {
 			session.setAttribute("administratorName", administrator.getName());
 		}
-		return "forword:/employee/showList";
+		return "forward:/employee/showList";
 	}
 }
