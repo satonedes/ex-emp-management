@@ -1,23 +1,18 @@
 package jp.co.sample.domain;
 
-public class Administractor {
+public class Administrator {
 	public Integer id;
 	public String name;
-	public String mail;
+	public String mailAddress;
 	public String password;
 	
-	public Administractor(){}
+	public Administrator(){}
 	
-	public Administractor(Integer id, String name, String mail, String password){
+	public Administrator(Integer id, String name, String mail, String password){
 		this.id = id;
 		this.name = name;
-		this.mail = mail;
+		this.mailAddress = mail;
 		this.password = password;
-	}
-
-	@Override
-	public String toString() {
-		return "Administrator [id=" + id + ", name=" + name + ", mail=" + mail + ", password=" + password + "]";
 	}
 
 	public Integer getId() {
@@ -36,12 +31,12 @@ public class Administractor {
 		this.name = name;
 	}
 
-	public String getMail() {
-		return mail;
+	public String getMailAddress() {
+		return mailAddress;
 	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setMailAddress(String mailAddress) {
+		this.mailAddress = mailAddress;
 	}
 
 	public String getPassword() {
@@ -50,6 +45,12 @@ public class Administractor {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Administrator [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
+				+ "]";
 	}
 
 }

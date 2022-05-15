@@ -10,36 +10,36 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import jp.co.sample.domain.Administractor;
+import jp.co.sample.domain.Administrator;
 
 @Repository
 public class AdministratorRepository {
 
-	private static final RowMapper<Administractor> ADMINISTRACTOR_ROW_MAPPER = (rs, i) -> {
-		Administractor administractor = new Administractor();
-		administractor.setId(rs.getInt("id"));
-		administractor.setName(rs.getString("name"));
-		administractor.setMail(rs.getString("mail"));
-		administractor.setPassword(rs.getString("password"));
-		return administractor;
+	private static final RowMapper<Administrator> ADMINISTRACTOR_ROW_MAPPER = (rs, i) -> {
+		Administrator administrator = new Administrator();
+		administrator.setId(rs.getInt("id"));
+		administrator.setName(rs.getString("name"));
+		administrator.setMailAddress(rs.getString("mailAddress"));
+		administrator.setPassword(rs.getString("password"));
+		return administrator;
 	};
 
 	@Autowired
 	private NamedParameterJdbcTemplate template;
 
-	public void insert(Administractor administractor) {
+	public void insert(Administrator administractor) {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(administractor);
 
-		String insertSql = "insert into administractors(name,mail_adress,password)values(:name,:mail,;password)";
+		String insertSql = "insert into administrators (name,mail_address,password) values (:name, :mailAddress, :password)";
 		template.update(insertSql, param);
 
 	}
 
-	public Administractor findByMailAddressAndPassword(String mailAddress, String password) {
-		String sql = "select id, name, mail_address, password from administractors where mail_address =:mail and password =;password";
-		SqlParameterSource param = new MapSqlParameterSource().addValue("password", password).addValue("mail", mailAddress);
+	public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
+		String sql = "select id, name, mail_address, password from administractors where mail_address =:mailAddress and password =;password";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("password", password).addValue("mailAddress", mailAddress);
 		
-		List<Administractor> administractorList = template.query(sql, param, ADMINISTRACTOR_ROW_MAPPER);
+		List<Administrator> administractorList = template.query(sql, param, ADMINISTRACTOR_ROW_MAPPER);
 		if (administractorList.size() == 0) {
 			return null;
 		}

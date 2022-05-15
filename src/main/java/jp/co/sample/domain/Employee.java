@@ -7,7 +7,7 @@ public class Employee {
 	public String name;
 	public String image;
 	public String gender;
-	public int hireDate;
+	public Date hireDate;
 	public String mailAddress;
 	public String zipCode;
 	public String address;
@@ -18,7 +18,7 @@ public class Employee {
 	
 	public Employee(){}
 
-	public Employee(Integer id, String name, String image, String gender, int hireDate, String mailAddress,
+	public Employee(Integer id, String name, String image, String gender, Date hireDate, String mailAddress,
 			String zipCode, String address, String telephone, Integer salary, String characteristics,
 			Integer dependentsCount) {
 		super();
@@ -68,11 +68,11 @@ public class Employee {
 		this.gender = gender;
 	}
 
-	public int getHireDate() {
+	public Date getHireDate() {
 		return hireDate;
 	}
 
-	public void setHireDate(int hireDate) {
+	public void setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
 	}
 

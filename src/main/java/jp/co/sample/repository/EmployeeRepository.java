@@ -35,7 +35,7 @@ public class EmployeeRepository {
 		}catch(Exception e){
 			return null;
 		}
-		return employee;
+		
 	}
 	public void update(Employee employee) {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
