@@ -15,11 +15,11 @@ import jp.co.sample.domain.Administrator;
 @Repository
 public class AdministratorRepository {
 
-	private static final RowMapper<Administrator> ADMINISTRACTOR_ROW_MAPPER = (rs, i) -> {
+	private static final RowMapper<Administrator> ADMINISTRATOR_ROW_MAPPER = (rs, i) -> {
 		Administrator administrator = new Administrator();
 		administrator.setId(rs.getInt("id"));
 		administrator.setName(rs.getString("name"));
-		administrator.setMailAddress(rs.getString("mailAddress"));
+		administrator.setMailAddress(rs.getString("mail_address"));
 		administrator.setPassword(rs.getString("password"));
 		return administrator;
 	};
@@ -36,14 +36,14 @@ public class AdministratorRepository {
 	}
 
 	public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
-		String sql = "select id, name, mail_address, password from administractors where mail_address =:mailAddress and password =;password";
+		String sql = "select id, name, mail_address, password from administrators where mail_address =:mailAddress and password =:password";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("password", password).addValue("mailAddress", mailAddress);
 		
-		List<Administrator> administractorList = template.query(sql, param, ADMINISTRACTOR_ROW_MAPPER);
-		if (administractorList.size() == 0) {
+		List<Administrator> administratorList = template.query(sql, param, ADMINISTRATOR_ROW_MAPPER);
+		if (administratorList.size() == 0) {
 			return null;
 		}
-		return administractorList.get(0);
+		return administratorList.get(0);
 	}
 
 }
