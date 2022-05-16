@@ -1,6 +1,6 @@
 <!DOCTYPE html><!-- 開発用（コピー先） -->
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head th:href="@{/logout}">
+<head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,7 @@
 					<p class="navbar-text navbar-right">
 						<span th:text="${session.administratorName + 'さん'}">山田さん</span>こんにちは！
 						&nbsp;&nbsp;&nbsp;
-						<a href="../administrator/login.html" class="navbar-link">ログアウト</a>
+						<a href="../administrator/login.html" class="navbar-link" th:href="@{/logout}">ログアウト</a>
 					</p>
 				</div>
 				<!-- /.navbar-collapse -->
