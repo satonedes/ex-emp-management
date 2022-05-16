@@ -63,9 +63,9 @@ public class AdministratorController {
 	}
 	@RequestMapping("/logout")
 	public String logout() {
-		HttpSession session = null;
+		
 		session.invalidate();
 		
-		return "redirect:/administrator/login";
+		return "redirect:/";
 	}
 }
