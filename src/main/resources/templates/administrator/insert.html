@@ -37,6 +37,7 @@
 							<div class="form-group">
 								<div class="row">
 									<div class="col-sm-12">
+									<div th:errors="*{name}" style="color: red">エラー！</div>
 										<label for="name">
 											氏名:
 										</label>
@@ -51,6 +52,7 @@
 							<div class="form-group">
 								<div class="row">
 									<div class="col-sm-12">
+									<div th:errors="*{mailAddress}" style="color: red">エラー！</div>
 										<label for="mailAddress">
 											メールアドレス:
 										</label>
@@ -65,6 +67,7 @@
 							<div class="form-group">
 								<div class="row">
 									<div class="col-sm-12">
+									<div th:errors="*{password}" style="color: red">エラー！</div>
 										<label for="passwaord">
 											パスワード:
 										</label>
